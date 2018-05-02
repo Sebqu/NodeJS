@@ -1,0 +1,4 @@
+.vscode/
+weather-app/node_modules/
+weather-app/config.json
+weather-app/testing/
