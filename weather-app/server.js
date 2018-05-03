@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 var app = express();
 
     
-hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/partials/');
 app.set('view engive', 'hbs');
 
 app.get('/', (req, res) =>{
@@ -25,12 +25,28 @@ app.get('/weather', (req, res) => {
                 err: `${err}.`
             })
         }else{
-            res.render('weather.hbs',{
-                pageTitle: city,
-
-
-            })
-        }
+            weather.getWeather(result.lat, result.lng, (err, result) =>{
+                console.log(result);
+                res.render('weather.hbs',{
+                    pageTitle: city,
+                    current:{
+                        temperature: result.currently.temperature,
+                        pressure: result.currently.pressure,
+                        windSpeed: result.currently.windSpeed
+                    },
+                    tommorow:{
+                        temperature: result.tommorow.temperature,
+                        pressure: result.tommorow.pressure,
+                        windSpeed: result.tommorow.windSpeed
+                    },
+                    twoDays:{
+                        temperature: result.twoDays.temperature,
+                        pressure: result.twoDays.pressure,
+                        windSpeed: result.twoDays.windSpeed
+                    }
+                });
+            });
+        };
     });
 });
 
@@ -42,3 +58,4 @@ app.get('/weather', (req, res) => {
 app.listen(port, () =>{
     console.log(`Server is running on port ${port}`)
 });
+

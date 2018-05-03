@@ -5,16 +5,26 @@
 <body>
     <style>
         {{> abc}}
+        {{> weatherbox}}
     </style>
 
-    <div class="search">
-    <h1>We are in: {{pageTitle}}
+    <div class ="box">
+        <h1>We are in {{pageTitle}} </h1>
+        <h2> Current weather: </h2>
+        
+            <p>Temperature: {{current.temperature}}</p>
+           <p>Pressure: {{current.pressure}}</p>
+           <p>WindSpeed: {{current.windSpeed}}</p>
+        <h2> Tommorow: </h2>
+        <p>Temperature: {{tommorow.temperature}}</p>
+           <p>Pressure: {{tommorow.pressure}}</p>
+           <p>WindSpeed: {{tommorow.windSpeed}}</p>
+        <h2> Two Days: </h2>
+         <p>Temperature: {{twoDays.temperature}}</p>
+           <p>Pressure: {{twoDays.pressure}}</p>
+           <p>WindSpeed: {{twoDays.windSpeed}}</p>
+    </div>
 
-    
-    </h1>
-    
-</form>
-</div>
 
 
 
